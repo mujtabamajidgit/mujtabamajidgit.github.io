@@ -1,0 +1,384 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Mujtaba Majid Baig</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout concept: the page reads like an n8n canvas. A trigger (hero), the agent at work (projects), then the reply (contact). */
+:root {
+  --bg: #F1F4F8;
+  --surface: #FFFFFF;
+  --ink: #14213D;
+  --muted: #4F5D78;
+  --line: #D5DDE8;
+  --accent: #0F766E;
+  --accent-ink: #FFFFFF;
+  --trigger: #B45309;
+  --tint: #E4EEF0;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A101C;
+    --surface: #111A2B;
+    --ink: #E8EDF5;
+    --muted: #9BA8BF;
+    --line: #243350;
+    --accent: #5EEAD4;
+    --accent-ink: #06201D;
+    --trigger: #FBBF24;
+    --tint: #12263A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A101C;
+  --surface: #111A2B;
+  --ink: #E8EDF5;
+  --muted: #9BA8BF;
+  --line: #243350;
+  --accent: #5EEAD4;
+  --accent-ink: #06201D;
+  --trigger: #FBBF24;
+  --tint: #12263A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-inline: clamp(16px, 4vw, 32px);
+  padding-block: 0 56px;
+}
+a { color: inherit; }
+.wrap { max-width: 1040px; margin-inline: auto; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 700; }
+h3 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); font-weight: 700; }
+p { margin: 0; }
+.mono { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+/* top bar */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+.nav { display: flex; gap: 22px; }
+.nav a { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
+.nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 56px); align-items: center; padding-block: clamp(28px, 6vw, 64px) clamp(36px, 6vw, 72px); }
+.hero h1 { font-size: clamp(2.3rem, 5.6vw, 3.9rem); font-weight: 800; margin-block: 14px 18px; }
+.hero .lead { font-size: 1.1rem; color: var(--muted); max-width: 34em; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 8px; border: 1.5px solid var(--ink); font-weight: 600; font-size: 0.95rem; text-decoration: none; background: transparent; color: var(--ink); }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { color: var(--accent-ink); filter: brightness(1.08); }
+
+.flow { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 14px; min-width: 0; }
+.flow svg { display: block; width: 100%; height: auto; }
+.flow figcaption { margin-top: 8px; }
+.flow { margin: 0; }
+.node { fill: var(--bg); stroke: var(--ink); stroke-width: 1.6; }
+.node.agent { fill: var(--tint); stroke: var(--accent); stroke-width: 2.2; }
+.node.tool { stroke: var(--muted); stroke-width: 1.3; }
+.wire { fill: none; stroke: var(--muted); stroke-width: 1.6; }
+.wire.dash { stroke-dasharray: 4 5; }
+.arrowhead { fill: var(--muted); }
+.t { font-family: var(--font-body); fill: var(--ink); font-size: 16px; font-weight: 600; }
+.t.sm { font-size: 14px; font-weight: 500; }
+.t.tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; fill: var(--trigger); }
+.t.cap { font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: 0.06em; fill: var(--muted); }
+.bolt { fill: var(--trigger); }
+
+/* sections */
+section { padding-block: clamp(40px, 6vw, 72px); border-top: 1px solid var(--line); }
+.sec-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 34px; max-width: 40rem; }
+.sec-head p { color: var(--muted); }
+
+/* projects */
+.project { display: flex; flex-direction: column; gap: 22px; padding-block: 8px 44px; }
+.project + .project { border-top: 1px solid var(--line); padding-top: 44px; }
+.p-head { display: flex; flex-direction: column; gap: 10px; }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 40px; }
+.cols h4 { margin: 0 0 6px; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+.cols p { max-width: 34em; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.tags li { font-family: var(--font-mono); font-size: 0.74rem; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); }
+.media { margin: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.media video, .media img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); }
+.media figcaption { font-size: 0.9rem; color: var(--muted); }
+.status { font-size: 0.92rem; color: var(--muted); }
+.text-link { font-weight: 600; color: var(--accent); text-underline-offset: 3px; }
+.mini { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding-bottom: 8px; }
+.mini article { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.mini h3 { font-size: 1.3rem; }
+.mini .small-h { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; display: block; }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 56px); }
+.about .story { display: flex; flex-direction: column; gap: 16px; max-width: 36em; }
+.facts { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.facts h3 { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
+.facts ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.facts li { font-size: 0.95rem; }
+.facts .when { display: block; font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); }
+
+/* contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 56px); align-items: start; }
+.rows { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; flex-wrap: wrap; }
+.row + .row { border-top: 1px solid var(--line); }
+.row .k { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); min-width: 4.5rem; }
+.row .v { font-weight: 500; overflow-wrap: anywhere; flex: 1 1 10rem; min-width: 0; }
+.copy { font-family: var(--font-mono); font-size: 0.74rem; min-height: 32px; padding: 0 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.copy:hover { border-color: var(--accent); color: var(--accent); }
+footer { padding-top: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.88rem; }
+
+@media (max-width: 800px) {
+  .hero, .about, .contact, .cols, .mini { grid-template-columns: minmax(0, 1fr); }
+  .nav { gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top">Mujtaba Majid Baig</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <p class="mono">AI automation &middot; Karachi, Pakistan</p>
+        <h1>AI workflows that take repetitive work off a business.</h1>
+        <p class="lead">I build customer support agents, email assistants and order tracking with n8n and AI, so business owners spend less time answering the same questions.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/mujtabamajidgit" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/mujtaba-baig-majid/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://wa.me/923110275568" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+
+      <figure class="flow">
+        <svg viewBox="0 0 520 330" role="img" aria-label="Diagram of an AI support agent: a customer message triggers an AI agent, which uses Gemini, memory and three Google Sheets tools, then sends a reply.">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead" d="M0 0 L10 5 L0 10 z"/></marker>
+          </defs>
+          <text class="t tag" x="10" y="42">TRIGGER</text>
+          <rect class="node" x="10" y="52" width="132" height="62" rx="12"/>
+          <text class="t" x="76" y="79" text-anchor="middle">Customer</text>
+          <text class="t" x="76" y="98" text-anchor="middle">message</text>
+
+          <rect class="node agent" x="204" y="40" width="130" height="86" rx="14"/>
+          <text class="t" x="269" y="88" text-anchor="middle">AI Agent</text>
+
+          <rect class="node" x="396" y="52" width="114" height="62" rx="12"/>
+          <text class="t" x="453" y="89" text-anchor="middle">Reply</text>
+
+          <path class="wire" d="M142 83 H202" marker-end="url(#ah)"/>
+          <path class="wire" d="M334 83 H394" marker-end="url(#ah)"/>
+
+          <path class="wire dash" d="M246 126 L54 214"/>
+          <path class="wire dash" d="M258 126 L150 214"/>
+          <path class="wire dash" d="M269 126 V214"/>
+          <path class="wire dash" d="M280 126 L388 214"/>
+          <path class="wire dash" d="M292 126 L484 214"/>
+
+          <rect class="node tool" x="10" y="214" width="88" height="48" rx="10"/>
+          <text class="t sm" x="54" y="243" text-anchor="middle">Gemini</text>
+          <rect class="node tool" x="106" y="214" width="88" height="48" rx="10"/>
+          <text class="t sm" x="150" y="243" text-anchor="middle">Memory</text>
+          <rect class="node tool" x="225" y="214" width="88" height="48" rx="10"/>
+          <text class="t sm" x="269" y="243" text-anchor="middle">Inventory</text>
+          <rect class="node tool" x="344" y="214" width="88" height="48" rx="10"/>
+          <text class="t sm" x="388" y="243" text-anchor="middle">Orders</text>
+          <rect class="node tool" x="440" y="214" width="70" height="48" rx="10"/>
+          <text class="t sm" x="475" y="243" text-anchor="middle">FAQ</text>
+          <path class="wire" d="M227 276 H508 M227 270 V276 M508 270 V276" />
+          <text class="t cap" x="368" y="296" text-anchor="middle">GOOGLE SHEETS</text>
+        </svg>
+        <figcaption class="mono">How my restaurant support agent is wired</figcaption>
+      </figure>
+    </div>
+
+    <section id="projects">
+      <div class="sec-head">
+        <p class="mono">Projects</p>
+        <h2>Workflows I have built</h2>
+        <p>Each one starts with a problem a business owner deals with every day. Workflow files and demos are on my GitHub.</p>
+      </div>
+
+      <article class="project">
+        <div class="p-head">
+          <p class="mono">Featured &middot; demo for a restaurant</p>
+          <h3>AI-Powered Customer Support &amp; Order Management</h3>
+          <ul class="tags"><li>n8n</li><li>AI Agent</li><li>Google Gemini</li><li>Google Sheets</li><li>Chat memory</li></ul>
+        </div>
+        <div class="cols">
+          <div>
+            <h4>The problem</h4>
+            <p>On a busy day, restaurant staff answer the same questions again and again: what is on the menu, what is in stock, how to order. Slow replies and mistyped orders cost sales.</p>
+          </div>
+          <div>
+            <h4>What it does</h4>
+            <p>A chat agent greets the customer, shows the menu with live stock from a Google Sheet, answers FAQs, asks for the customer's name and records the order in an orders sheet. It remembers the conversation, so customers can order in plain language.</p>
+          </div>
+        </div>
+        <figure class="media">
+          <video controls preload="metadata" playsinline poster="poster.jpg">
+            <source src="demo.mp4" type="video/mp4">
+          </video>
+          <figcaption>Demo recording, about 3 minutes: the customer asks for the menu and places an order, and the agent checks stock in the sheet.</figcaption>
+        </figure>
+        <figure class="media">
+          <img src="workflow-orders.png" alt="The n8n workflow: a chat trigger feeds an AI agent connected to Google Gemini, simple memory and three Google Sheets tools for inventory, orders and FAQ." loading="lazy">
+          <figcaption>The n8n workflow behind it.</figcaption>
+        </figure>
+        <p class="status">In progress: connecting the same agent to WhatsApp.</p>
+        <p><a class="text-link" href="https://github.com/mujtabamajidgit/AI-POWERED-RESTURANT-CUSTOMER-SUPPORT-AGENT" target="_blank" rel="noopener">View this project on GitHub</a></p>
+      </article>
+
+      <article class="project">
+        <div class="p-head">
+          <p class="mono">Email automation</p>
+          <h3>Auto Email Reply System</h3>
+          <ul class="tags"><li>n8n</li><li>Gmail</li><li>Google Gemini</li><li>Text Classifier</li></ul>
+        </div>
+        <div class="cols">
+          <div>
+            <h4>The problem</h4>
+            <p>Orders and general questions land in the same inbox. When replies are slow, customers go somewhere else.</p>
+          </div>
+          <div>
+            <h4>What it does</h4>
+            <p>When a new email arrives, the workflow decides whether it is an order or an inquiry, asks Gemini to write a fitting reply, and saves it as a Gmail draft. A person checks the draft before sending, so nothing goes out unreviewed.</p>
+          </div>
+        </div>
+        <figure class="media">
+          <img src="workflow-email.png" alt="The n8n workflow: a Gmail trigger goes to a text classifier with two outputs, order and inquiry. Each output goes to a Gemini message node and then to a Gmail create draft node." loading="lazy">
+          <figcaption>The n8n workflow behind it.</figcaption>
+        </figure>
+      </article>
+
+      <div class="mini">
+        <article>
+          <div>
+            <span class="small-h">Customer support</span>
+            <h3>Car Showroom Customer Support Agent</h3>
+          </div>
+          <p><strong>The problem.</strong> Car buyers ask about models, availability and prices at all hours, and a slow answer sends them to another showroom.</p>
+          <p><strong>What it does.</strong> An AI support agent that answers buyer enquiries for a showroom, shaped by my background in automotive sales.</p>
+          <ul class="tags"><li>n8n</li><li>AI Agent</li><li>LLM</li></ul>
+          <p class="status">Demo and workflow file coming soon.</p>
+        </article>
+        <article>
+          <div>
+            <span class="small-h">Operations</span>
+            <h3>Inventory Management System</h3>
+          </div>
+          <p><strong>The problem.</strong> Small businesses lose sales when they do not know what is in stock, and tie up money in stock that does not sell.</p>
+          <p><strong>What it does.</strong> A workflow that keeps stock levels organised in one place, so a business can see what is available.</p>
+          <ul class="tags"><li>n8n</li><li>Google Sheets</li></ul>
+          <p class="status">Demo and workflow file coming soon.</p>
+        </article>
+      </div>
+      <p class="status" style="margin-top:22px">More workflows are in development. I am building new ones every week.</p>
+    </section>
+
+    <section id="about">
+      <div class="sec-head"><p class="mono">About</p><h2>From sales to automation</h2></div>
+      <div class="about">
+        <div class="story">
+          <p>I am a Bachelor of Software Engineering student at Nazeer Hussain University in Karachi, graduating in 2027. My goal is to become an entrepreneur, and AI is a good place to start: it is changing how every business works, and there is a lot to explore and build.</p>
+          <p>I want to build AI automations that solve real problems for business owners, and later for my own business too.</p>
+          <p>I came to this from sales. More than three years in B2B sales, software sales and international business development taught me how customers ask questions and where businesses lose time and orders.</p>
+        </div>
+        <div class="facts">
+          <div>
+            <h3>Tools</h3>
+            <ul>
+              <li>n8n workflow automation and AI agents</li>
+              <li>Google Gemini and OpenAI models</li>
+              <li>Gmail and Google Sheets</li>
+              <li>Python, HTML, CSS (basic), Git and GitHub</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Experience</h3>
+            <ul>
+              <li>International Business Development Executive, A2B Car Hub Japan <span class="when">May 2026 to present</span></li>
+              <li>Sales Executive, Techhood <span class="when">2024 to 2025</span></li>
+              <li>Salesman, Al Majid Motorsports <span class="when">2023 to 2024</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Certificates of participation</h3>
+            <ul>
+              <li>AI in the Real World: Opportunities, Skills &amp; the Future of Work</li>
+              <li>Hack the Python Matrix</li>
+              <li>Cybersecurity Careers: Skills, Opportunities &amp; What's Next</li>
+            </ul>
+            <p class="status" style="margin-top:8px">Professional Youth Foundation of Pakistan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="mono">Contact</p>
+          <h2>Got a repetitive task eating your team's time?</h2>
+          <p>Tell me what it is. I will suggest a simple automation for it and show you how it would work.</p>
+        </div>
+        <div class="rows">
+          <div class="row"><span class="k">Email</span><span class="v" id="v-email">mujtaba078123@gmail.com</span><button class="copy" type="button" data-copy="mujtaba078123@gmail.com" data-target="v-email">Copy</button></div>
+          <div class="row"><span class="k">WhatsApp</span><span class="v" id="v-wa">+92 311 0275568</span><button class="copy" type="button" data-copy="+923110275568" data-target="v-wa">Copy</button></div>
+          <div class="row"><span class="k">GitHub</span><a class="v" href="https://github.com/mujtabamajidgit" target="_blank" rel="noopener">github.com/mujtabamajidgit</a></div>
+          <div class="row"><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/mujtaba-baig-majid/" target="_blank" rel="noopener">linkedin.com/in/mujtaba-baig-majid</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Mujtaba Majid Baig &middot; Karachi, Pakistan</footer>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var done = function (label) {
+      btn.textContent = label;
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+    };
+    var select = function () {
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if (!el) { return; }
+      var r = document.createRange();
+      r.selectNodeContents(el);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      done('Selected');
+    };
+    try {
+      navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function () { done('Copied'); }, select);
+    } catch (e) { select(); }
+  });
+});
+</script>
+
+</body></html>
