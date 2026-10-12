@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Mujtaba Majid Baig</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
@@ -122,6 +122,20 @@ section { padding-block: clamp(40px, 6vw, 72px); border-top: 1px solid var(--lin
 .mini h3 { font-size: 1.3rem; }
 .mini .small-h { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; display: block; }
 
+
+/* project index + media rows */
+.index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; list-style: none; margin: 0 0 44px; padding: 0; }
+.index a { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); text-decoration: none; }
+.index a:hover { border-color: var(--accent); }
+.index .t { font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.25; }
+.index .s { font-size: 0.85rem; color: var(--muted); }
+.project { scroll-margin-top: 16px; }
+.media-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 800px) { .media-row { grid-template-columns: minmax(0, 1fr); } .index { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .index { grid-template-columns: minmax(0, 1fr); } }
+.media-stack { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.media.narrow { max-width: 520px; }
+
 /* about */
 .about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 56px); }
 .about .story { display: flex; flex-direction: column; gap: 16px; max-width: 36em; }
@@ -164,7 +178,7 @@ footer { padding-top: 28px; border-top: 1px solid var(--line); color: var(--mute
       <div>
         <p class="mono">AI automation &middot; Karachi, Pakistan</p>
         <h1>AI workflows that take repetitive work off a business.</h1>
-        <p class="lead">I build customer support agents, email assistants and order tracking with n8n and AI, so business owners spend less time answering the same questions.</p>
+        <p class="lead">I build customer support agents, lead follow-up, inventory assistants and email replies with n8n and AI, so business owners spend less time on repetitive work.</p>
         <div class="actions">
           <a class="btn primary" href="https://github.com/mujtabamajidgit" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/mujtaba-baig-majid/" target="_blank" rel="noopener">LinkedIn</a>
@@ -221,9 +235,18 @@ footer { padding-top: 28px; border-top: 1px solid var(--line); color: var(--mute
         <p>Each one starts with a problem a business owner deals with every day. Workflow files and demos are on my GitHub.</p>
       </div>
 
-      <article class="project">
+      <ul class="index" aria-label="Projects at a glance">
+        <li><a href="#p-restaurant"><span class="t">Restaurant support agent</span><span class="s">Answers questions and takes orders</span></a></li>
+        <li><a href="#p-leads"><span class="t">AI Lead Qualification</span><span class="s">Form to sheet to personal AI reply</span></a></li>
+        <li><a href="#p-medical"><span class="t">Medical Store Inventory</span><span class="s">Stock answers from Airtable</span></a></li>
+        <li><a href="#p-car"><span class="t">Car Showroom Support Agent</span><span class="s">Buyer enquiries, any hour</span></a></li>
+        <li><a href="#p-website"><span class="t">Website Downgrade and Upgrade Manager</span><span class="s">Scheduled checks, email alerts</span></a></li>
+        <li><a href="#p-email"><span class="t">Auto Email Reply System</span><span class="s">Sorts emails, drafts replies</span></a></li>
+      </ul>
+
+      <article class="project" id="p-restaurant">
         <div class="p-head">
-          <p class="mono">Featured &middot; demo for a restaurant</p>
+          <p class="mono">Customer support &middot; Orders</p>
           <h3>AI-Powered Customer Support &amp; Order Management</h3>
           <ul class="tags"><li>n8n</li><li>AI Agent</li><li>Google Gemini</li><li>Google Sheets</li><li>Chat memory</li></ul>
         </div>
@@ -251,7 +274,119 @@ footer { padding-top: 28px; border-top: 1px solid var(--line); color: var(--mute
         <p><a class="text-link" href="https://github.com/mujtabamajidgit/AI-POWERED-RESTURANT-CUSTOMER-SUPPORT-AGENT" target="_blank" rel="noopener">View this project on GitHub</a></p>
       </article>
 
-      <article class="project">
+      <article class="project" id="p-leads">
+        <div class="p-head">
+          <p class="mono">Sales &middot; Lead handling</p>
+          <h3>AI Lead Qualification</h3>
+          <ul class="tags"><li>n8n</li><li>Form trigger</li><li>AI Agent</li><li>Groq</li><li>Google Sheets</li><li>Gmail</li></ul>
+        </div>
+        <div class="cols">
+          <div>
+            <h4>The problem</h4>
+            <p>Any business that takes enquiries through a web form has the same issue. Someone has to copy each lead into a sheet, read it and write back, so leads wait for hours and some are forgotten. It applies to schools, clinics, agencies, shops and offices.</p>
+          </div>
+          <div>
+            <h4>What it does</h4>
+            <p>A visitor fills in an enquiry form; the demo is a course enquiry form. The workflow saves the lead in Google Sheets, an AI agent reads the enquiry and writes a personalised reply, and Gmail sends it. The email carries buttons so the lead can answer &ldquo;Yes, I am interested&rdquo;, &ldquo;Yes, I am still interested&rdquo; or &ldquo;I am not interested&rdquo;. The AI's message is stored next to the lead in the sheet.</p>
+          </div>
+        </div>
+        <figure class="media">
+          <video controls preload="metadata" playsinline poster="lead-poster.jpg">
+            <source src="lead.mp4" type="video/mp4">
+          </video>
+          <figcaption>Demo recording, about 75 seconds: the form is submitted, the workflow runs, the lead appears in the sheet and the AI reply arrives in Gmail.</figcaption>
+        </figure>
+        <figure class="media">
+          <img src="lead-workflow.png" alt="The n8n workflow: an on-form-submission trigger appends a row in Google Sheets, then an AI agent with a Groq chat model writes the reply, which is saved to the sheet and sent by Gmail." loading="lazy">
+          <figcaption>The n8n workflow behind it.</figcaption>
+        </figure>
+      </article>
+
+      <article class="project" id="p-medical">
+        <div class="p-head">
+          <p class="mono">Operations &middot; Inventory</p>
+          <h3>Medical Store Inventory Management</h3>
+          <ul class="tags"><li>n8n</li><li>AI Agent</li><li>Google Gemini</li><li>Airtable</li><li>Chat memory</li></ul>
+        </div>
+        <div class="cols">
+          <div>
+            <h4>The problem</h4>
+            <p>Pharmacy staff are asked all day whether a medicine is in stock, which brand it is and whether it needs a prescription. Checking a register or a spreadsheet each time is slow.</p>
+          </div>
+          <div>
+            <h4>What it does</h4>
+            <p>A chat assistant that answers from the store's inventory in Airtable. Ask for the stock of a medicine, or which medicines are in a category, and it replies with the quantity, the manufacturer and whether a prescription is needed. It can also update a record.</p>
+          </div>
+        </div>
+        <div class="media-stack">
+        <figure class="media">
+          <img src="medical-chat.png" alt="The chat: asked for the stock of Augmentin 625mg the agent answers 200 tablets, and asked for antibiotics it lists the medicine with stock, manufacturer and a prescription note." loading="lazy">
+          <figcaption>The assistant answering stock and category questions.</figcaption>
+        </figure>
+        <figure class="media">
+          <img src="medical-workflow.png" alt="The n8n workflow: a chat trigger feeds an AI agent connected to Google Gemini, simple memory and two Airtable tools, search records and update record." loading="lazy">
+          <figcaption>The n8n workflow behind it.</figcaption>
+        </figure>
+        </div>
+      </article>
+
+      <article class="project" id="p-car">
+        <div class="p-head">
+          <p class="mono">Customer support &middot; Automotive</p>
+          <h3>Car Showroom Customer Support Agent</h3>
+          <ul class="tags"><li>n8n</li><li>AI Agent</li><li>Google Gemini</li><li>Google Sheets</li><li>Chat memory</li></ul>
+        </div>
+        <div class="cols">
+          <div>
+            <h4>The problem</h4>
+            <p>Car buyers ask about models, availability and opening hours at all hours, and a slow answer sends them to another showroom.</p>
+          </div>
+          <div>
+            <h4>What it does</h4>
+            <p>A chat agent that greets visitors, answers questions about the showroom and can look up the vehicle list in a Google Sheet. It remembers the conversation, so a buyer can keep asking follow-up questions. It is shaped by my background in automotive sales.</p>
+          </div>
+        </div>
+        <figure class="media">
+          <video controls preload="metadata" playsinline poster="car-poster.jpg">
+            <source src="car.mp4" type="video/mp4">
+          </video>
+          <figcaption>Demo recording, about 45 seconds: a visitor says hello and asks what cars are sold and what the timings are.</figcaption>
+        </figure>
+        <figure class="media">
+          <img src="car-workflow.png" alt="The n8n workflow: a chat trigger feeds an AI agent connected to Google Gemini, simple memory and a Google Sheets tool that reads rows." loading="lazy">
+          <figcaption>The n8n workflow behind it.</figcaption>
+        </figure>
+      </article>
+
+      <article class="project" id="p-website">
+        <div class="p-head">
+          <p class="mono">IT operations &middot; Monitoring</p>
+          <h3>Website Downgrade and Upgrade Manager</h3>
+          <ul class="tags"><li>n8n</li><li>Schedule trigger</li><li>HTTP request</li><li>If condition</li><li>Gmail</li></ul>
+        </div>
+        <div class="cols">
+          <div>
+            <h4>The problem</h4>
+            <p>When a website goes down, the owner often hears about it from a customer. Every hour offline can cost sales, and nobody wants to check the site by hand.</p>
+          </div>
+          <div>
+            <h4>What it does</h4>
+            <p>On a schedule, the workflow sends a request to the website and checks the answer. Depending on the result, it prepares a status message and emails it through Gmail: one message when the site is up and a different one when it is not.</p>
+          </div>
+        </div>
+        <figure class="media">
+          <img src="website-workflow.png" alt="The n8n workflow: a schedule trigger runs an HTTP request, an If node splits the result into two branches, and each branch edits fields and sends a Gmail message." loading="lazy">
+          <figcaption>The n8n workflow behind it.</figcaption>
+        </figure>
+        <div class="media-stack">
+        <figure class="media narrow">
+          <img src="website-email.png" alt="The Gmail message titled Website is UP, sent automatically by n8n." loading="lazy">
+          <figcaption>The status email in the inbox.</figcaption>
+        </figure>
+        </div>
+      </article>
+
+      <article class="project" id="p-email">
         <div class="p-head">
           <p class="mono">Email automation</p>
           <h3>Auto Email Reply System</h3>
@@ -272,30 +407,7 @@ footer { padding-top: 28px; border-top: 1px solid var(--line); color: var(--mute
           <figcaption>The n8n workflow behind it.</figcaption>
         </figure>
       </article>
-
-      <div class="mini">
-        <article>
-          <div>
-            <span class="small-h">Customer support</span>
-            <h3>Car Showroom Customer Support Agent</h3>
-          </div>
-          <p><strong>The problem.</strong> Car buyers ask about models, availability and prices at all hours, and a slow answer sends them to another showroom.</p>
-          <p><strong>What it does.</strong> An AI support agent that answers buyer enquiries for a showroom, shaped by my background in automotive sales.</p>
-          <ul class="tags"><li>n8n</li><li>AI Agent</li><li>LLM</li></ul>
-          <p class="status">Demo and workflow file coming soon.</p>
-        </article>
-        <article>
-          <div>
-            <span class="small-h">Operations</span>
-            <h3>Inventory Management System</h3>
-          </div>
-          <p><strong>The problem.</strong> Small businesses lose sales when they do not know what is in stock, and tie up money in stock that does not sell.</p>
-          <p><strong>What it does.</strong> A workflow that keeps stock levels organised in one place, so a business can see what is available.</p>
-          <ul class="tags"><li>n8n</li><li>Google Sheets</li></ul>
-          <p class="status">Demo and workflow file coming soon.</p>
-        </article>
-      </div>
-      <p class="status" style="margin-top:22px">More workflows are in development. I am building new ones every week.</p>
+      <p class="status" style="margin-top:8px">More workflows are in development. I am building new ones every week.</p>
     </section>
 
     <section id="about">
@@ -311,8 +423,8 @@ footer { padding-top: 28px; border-top: 1px solid var(--line); color: var(--mute
             <h3>Tools</h3>
             <ul>
               <li>n8n workflow automation and AI agents</li>
-              <li>Google Gemini and OpenAI models</li>
-              <li>Gmail and Google Sheets</li>
+              <li>Google Gemini, Groq and OpenAI models</li>
+              <li>Gmail, Google Sheets and Airtable</li>
               <li>Python, HTML, CSS (basic), Git and GitHub</li>
             </ul>
           </div>
