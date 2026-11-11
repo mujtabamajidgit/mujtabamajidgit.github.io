@@ -9,4 +9,12 @@ h1{font-size:2.3rem;line-height:1.15;margin:.3em 0}h2{font-size:1.45rem;margin:2
 figure{margin:1.5em 0}img{max-width:100%;height:auto;border:1px solid var(--ln);border-radius:6px;background:var(--card)}figcaption{font:14px system-ui,sans-serif;color:var(--mut);margin-top:6px}
 ol li,ul li{margin:.5em 0}.pn{display:flex;justify-content:space-between;gap:16px;margin:3em 0;font:15px system-ui,sans-serif}
 .cta{border-top:1px solid var(--ln);margin-top:3em;padding:1em 0 2em}footer{font:14px system-ui,sans-serif;color:var(--mut);padding-bottom:3em}
-.btns a{display:inline-block;margin:0 12px 8px 0;font:15px system-ui,sans-serif}
+.btns a{display:inline-block;margin:0 12px 8px 0;font:15px system-ui,sans-serif}.hero{padding:56px 0 24px}.hero h1{font-size:2.8rem}.lead{font-size:1.2rem;color:var(--mut)}.meta{font:14px system-ui,sans-serif;color:var(--mut)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin:1.2em 0;padding:0}.row a{font:15px system-ui,sans-serif;border:1px solid var(--ln);border-radius:6px;padding:8px 16px;text-decoration:none}.row a.pri{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.list{list-style:none;padding:0;display:grid;gap:14px}.list>li{margin:0}.list>li>a{display:block;border:1px solid var(--ln);border-radius:8px;padding:16px 18px;background:var(--card);color:var(--fg);text-decoration:none}
+.list>li>a:hover{border-color:var(--ac)}.list h3{margin:.2em 0;font-size:1.2rem}.list p{margin:.3em 0;color:var(--mut);font-size:.95rem}
+.list ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:.6em 0;font:12px system-ui,sans-serif}.list ul li{border:1px solid var(--ln);border-radius:999px;padding:1px 10px;margin:0}
+.list .k{font:13px system-ui,sans-serif;color:var(--mut)}.list .more{font:14px system-ui,sans-serif;color:var(--ac)}
+.grid{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.grid li{border:1px solid var(--ln);border-radius:8px;padding:14px 16px;background:var(--card);margin:0}.grid h3{margin:0 0 4px;font-size:1.05rem}.grid p{margin:.2em 0;font-size:.95rem}
+.stage{font:13px system-ui,sans-serif;color:var(--mut)}.about img{max-width:260px}
+button{font:14px system-ui,sans-serif;border:1px solid var(--ln);background:var(--card);color:var(--fg);border-radius:6px;padding:4px 12px;cursor:pointer}
