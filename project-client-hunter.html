@@ -1,6 +1,258 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Client Hunter Automation | Mujtaba Majid Baig</title><meta name="description" content="Enter a niche and a city, and the workflow finds local businesses, checks their websites and saves AI-scored leads to Google Sheets."><meta property="og:title" content="Client Hunter Automation | Mujtaba Majid Baig"><meta property="og:description" content="Enter a niche and a city, and the workflow finds local businesses, checks their websites and saves AI-scored leads to Google Sheets."><meta property="og:image" content="https://mujtabamajidgit.github.io/og.png"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="site.css"></head><body><nav><div class="w"><a class="lg" href="index.html"><b>MB</b>Mujtaba Majid Baig</a><a class="nl" href="projects.html">Projects</a><a class="nl" href="index.html#services">Services</a><a class="nl" href="index.html#about">About</a><a class="nl" href="cv.html">CV</a><a class="bt" href="index.html#contact">Hire me</a></div></nav><main><div class="w n"><div class="cs"><a href="projects.html">&larr; All projects</a><p class="k" style="margin-top:24px">Sales · Lead generation</p><h1 style="font-size:clamp(2.1rem,5vw,3.2rem)">Client Hunter Automation</h1><p class="lead">Enter a niche and a city, and the workflow finds local businesses, checks their websites and saves AI-scored leads to Google Sheets.</p><div class="mt"><div><b>Built with</b>n8n, Form trigger, Apify</div><div><b>Integrations</b>AI analysis, Groq, Google Sheets</div><div><b>Role</b>Design, build and testing</div></div></div>
-<section style="padding:0"><figure class="fr" style="margin-top:0"><img src="images/client-hunter-workflow.png" alt="The n8n workflow: form, Apify search, loop, website check, AI analysis and save to Google Sheets."><figcaption>The n8n workflow.</figcaption></figure><h2>The problem</h2><p>Finding new clients by hand means searching maps, opening websites one by one and copying details into a sheet. It takes hours, and the notes are never consistent.</p><h2 style="margin-top:1.6em">The solution</h2><p>A form takes a niche and a city. Apify finds matching businesses, the workflow checks whether each one has a website, and an AI model analyses what it finds and writes a short lead summary. Each result is added as a row in Google Sheets.</p></section>
-<section style="padding:40px 0 0"><h2>How it works</h2><ol class="tl" style="margin-top:20px"><li><h3>Enter the niche and city</h3><p>A simple n8n form starts the run, for example dentists in Miami.</p></li><li><h3>Find businesses</h3><p>An Apify request returns local businesses with category, rating and review count.</p></li><li><h3>Check each website</h3><p>The workflow loops through the businesses. Those with a website are fetched and scanned for signals; those without one are marked as having no website.</p></li><li><h3>Analyse with AI</h3><p>A prompt is built from the business data and website signals. A Groq model returns structured output.</p></li><li><h3>Save the lead</h3><p>The result is shaped into a row and appended to Google Sheets. A 4-second wait between businesses keeps the run stable.</p></li></ol></section>
-<section style="padding:24px 0 0"><h2>See it working</h2><figure class="fr"><img src="images/client-hunter-workflow.png" alt="The n8n workflow: form, Apify search, loop, website check, AI analysis and save to Google Sheets." loading="lazy"><figcaption>The n8n workflow.</figcaption></figure><figure class="fr"><img src="images/client-hunter-sheet.png" alt="The Client Hunter Leads Google Sheet with business name, category, rating and reviews." loading="lazy"><figcaption>The leads sheet after a run.</figcaption></figure><h3>What the screenshots show</h3><ul><li>The 15-node workflow with its website / no website branch.</li><li>The Client Hunter Leads sheet with date, niche, city, business name, category, rating and review count.</li></ul></section>
-<section style="padding:32px 0 0"><h2>A good fit for</h2><ul class="tg"><li>Marketing and web design freelancers</li><li>Agencies that sell to local businesses</li><li>Sales teams building prospect lists</li></ul></section>
-<div class="pv"><span></span><span><a href="project-cv-screening.html">Recruitment / CV Screening Agent &rarr;</a></span></div><div class="cta"><h2>Have a task that eats your team's time?</h2><p>Tell me what it is. I will tell you if it can be automated and how it would work.</p><div class="acts" style="justify-content:center"><a class="bt" href="mailto:mujtaba078123@gmail.com">Email me</a><a class="bt o" href="https://wa.me/923110275568">WhatsApp</a></div></div><div style="height:48px"></div></div></main><footer><div class="w"><span>Mujtaba Majid Baig · Karachi, Pakistan (UTC+5)</span><span><a href="https://github.com/mujtabamajidgit">GitHub</a> · <a href="https://www.linkedin.com/in/mujtaba-baig-majid/">LinkedIn</a> · <a href="Mujtaba-Majid-Baig-Resume.pdf">Resume (PDF)</a></span></div></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client Hunter Automation | Mujtaba Majid Baig</title>
+<meta name="description" content="Give a niche and a city. The workflow finds local businesses on Google Maps, checks their websites for gaps and saves a lead list in Google Sheets.">
+<meta property="og:title" content="Client Hunter Automation | Mujtaba Majid Baig">
+<meta property="og:description" content="Give a niche and a city. The workflow finds local businesses on Google Maps, checks their websites for gaps and saves a lead list in Google Sheets.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://mujtabamajidgit.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout concept: an n8n canvas. The page is a pipeline: trigger (hero), work (projects), live build (highlight band), reply (contact). */
+:root {
+  --bg: #F1F4F8;
+  --surface: #FFFFFF;
+  --ink: #14213D;
+  --muted: #4F5D78;
+  --line: #D5DDE8;
+  --accent: #0F766E;
+  --accent-ink: #FFFFFF;
+  --trigger: #B45309;
+  --tint: #E4EEF0;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A101C; --surface: #111A2B; --ink: #E8EDF5; --muted: #9BA8BF; --line: #243350;
+    --accent: #5EEAD4; --accent-ink: #06201D; --trigger: #FBBF24; --tint: #12263A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A101C; --surface: #111A2B; --ink: #E8EDF5; --muted: #9BA8BF; --line: #243350;
+  --accent: #5EEAD4; --accent-ink: #06201D; --trigger: #FBBF24; --tint: #12263A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-inline: clamp(16px, 4vw, 32px);
+  padding-block: 0 56px;
+}
+a { color: inherit; }
+img { max-width: 100%; }
+.wrap { max-width: 1040px; margin-inline: auto; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 700; }
+h3 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); font-weight: 700; }
+p { margin: 0; }
+.mono { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.status { font-size: 0.92rem; color: var(--muted); }
+.text-link { font-weight: 600; color: var(--accent); text-underline-offset: 3px; }
+
+/* header + footer */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+.nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.nav a { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: var(--muted); padding-block: 4px; border-bottom: 2px solid transparent; }
+.nav a:hover { color: var(--accent); }
+.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+footer { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.88rem; display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; }
+footer a { color: var(--muted); }
+
+/* buttons */
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 8px; border: 1.5px solid var(--ink); font-weight: 600; font-size: 0.95rem; text-decoration: none; background: transparent; color: var(--ink); }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { color: var(--accent-ink); filter: brightness(1.08); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 56px); align-items: center; padding-block: clamp(28px, 6vw, 64px) clamp(36px, 6vw, 72px); }
+.hero h1 { font-size: clamp(2.3rem, 5.6vw, 3.9rem); font-weight: 800; margin-block: 14px 18px; }
+.hero .lead { font-size: 1.1rem; color: var(--muted); max-width: 34em; }
+.where { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; font-size: 0.92rem; color: var(--muted); }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex: none; }
+.flow { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 14px; min-width: 0; margin: 0; }
+.flow svg { display: block; width: 100%; height: auto; }
+.flow figcaption { margin-top: 8px; }
+.node { fill: var(--bg); stroke: var(--ink); stroke-width: 1.6; }
+.node.agent { fill: var(--tint); stroke: var(--accent); stroke-width: 2.2; }
+.node.tool { stroke: var(--muted); stroke-width: 1.3; }
+.wire { fill: none; stroke: var(--muted); stroke-width: 1.6; }
+.wire.dash { stroke-dasharray: 4 5; }
+.arrowhead { fill: var(--muted); }
+.t { font-family: var(--font-body); fill: var(--ink); font-size: 16px; font-weight: 600; }
+.t.sm { font-size: 14px; font-weight: 500; }
+.t.tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; fill: var(--trigger); }
+.t.cap { font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: 0.06em; fill: var(--muted); }
+
+/* sections */
+section { padding-block: clamp(40px, 6vw, 72px); border-top: 1px solid var(--line); }
+.sec-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 34px; max-width: 40rem; }
+.sec-head p { color: var(--muted); }
+.row-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 34px; }
+.row-head .sec-head { margin-bottom: 0; }
+
+/* tags */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.tags li { font-family: var(--font-mono); font-size: 0.74rem; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); }
+
+/* project cards */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; list-style: none; margin: 0; padding: 0; }
+.cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pcard { display: flex; flex-direction: column; height: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; min-width: 0; }
+.pcard:hover { border-color: var(--accent); }
+.pcard .thumb { aspect-ratio: 2 / 1; width: 100%; object-fit: cover; object-position: top left; display: block; background: var(--tint); border-bottom: 1px solid var(--line); }
+.pcard .body { display: flex; flex-direction: column; gap: 10px; padding: 18px 18px 20px; flex: 1; }
+.pcard h3 { font-size: 1.25rem; }
+.pcard p.sum { color: var(--muted); font-size: 0.95rem; }
+.pcard .go { margin-top: auto; padding-top: 6px; font-weight: 600; color: var(--accent); }
+
+/* highlighted: currently building */
+.dev { border: 2px solid var(--accent); background: var(--tint); border-radius: 20px; padding: clamp(24px, 4vw, 44px); }
+.badge { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--accent-ink); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; }
+.badge .pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--accent-ink); animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+.dev h2 { font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 800; margin-block: 18px 12px; }
+.dev .lead { font-size: 1.1rem; color: var(--muted); max-width: 38em; }
+.dev-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
+.dev-item { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.dev-item h3 { font-size: 1.3rem; }
+.dev-item p { color: var(--muted); }
+.stages { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.stages li { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.stages li[aria-current="step"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 500; }
+
+/* services + process */
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; list-style: none; margin: 0; padding: 0; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 10px; height: 100%; min-width: 0; }
+.tile h3 { font-size: 1.15rem; }
+.tile p { color: var(--muted); font-size: 0.95rem; }
+.tile a { margin-top: auto; padding-top: 4px; font-weight: 600; color: var(--accent); text-underline-offset: 3px; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; list-style: none; margin: 0; padding: 0; }
+.steps li { display: flex; flex-direction: column; gap: 8px; border-top: 2px solid var(--accent); padding-top: 14px; min-width: 0; }
+.steps h3 { font-size: 1.15rem; }
+.steps p { color: var(--muted); font-size: 0.95rem; }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 56px); }
+.about .story { display: flex; flex-direction: column; gap: 16px; max-width: 36em; }
+.facts { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.facts h3 { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
+.facts ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.facts li { font-size: 0.95rem; }
+.facts .when { display: block; font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); }
+
+/* cv */
+.cv { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: clamp(24px, 5vw, 56px); align-items: start; }
+.cv-sheet { display: block; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px rgba(10, 16, 28, 0.18); }
+.cv-sheet img { display: block; width: 100%; height: auto; }
+.cv-text { display: flex; flex-direction: column; gap: 14px; max-width: 34em; }
+.cv-text p { color: var(--muted); }
+.cv.big { grid-template-columns: minmax(0, 1fr); }
+.cv.big .cv-sheet { max-width: 820px; }
+
+/* contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 56px); align-items: start; }
+.rows { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; flex-wrap: wrap; }
+.row + .row { border-top: 1px solid var(--line); }
+.row .k { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); min-width: 4.5rem; }
+.row .v { font-weight: 500; overflow-wrap: anywhere; flex: 1 1 10rem; min-width: 0; }
+.copy { font-family: var(--font-mono); font-size: 0.74rem; min-height: 32px; padding: 0 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.copy:hover { border-color: var(--accent); color: var(--accent); }
+
+/* projects page + case studies */
+.crumbs { padding-top: 6px; font-size: 0.9rem; color: var(--muted); }
+.crumbs a { color: var(--muted); }
+.p-hero { display: flex; flex-direction: column; gap: 16px; padding-block: 28px 8px; max-width: 46rem; }
+.p-hero h1 { font-size: clamp(2.1rem, 5vw, 3.3rem); font-weight: 800; }
+.p-hero .lead { font-size: 1.15rem; color: var(--muted); }
+.case { display: flex; flex-direction: column; gap: 40px; padding-block: 36px 8px; }
+.case h2 { font-size: clamp(1.4rem, 2.6vw, 1.8rem); margin-bottom: 12px; }
+.case p { max-width: 40em; }
+.two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 44px; }
+.flowlist { list-style: none; counter-reset: s; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; max-width: 44rem; }
+.flowlist li { counter-increment: s; position: relative; padding: 0 0 20px 52px; }
+.flowlist li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--accent); color: var(--accent); display: grid; place-items: center; font-family: var(--font-mono); font-size: 0.82rem; background: var(--bg); }
+.flowlist li::after { content: ""; position: absolute; left: 16px; top: 38px; bottom: 4px; width: 2px; background: var(--line); }
+.flowlist li:last-child::after { display: none; }
+.flowlist b { display: block; }
+.flowlist span { color: var(--muted); font-size: 0.95rem; }
+.checks { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; max-width: 40em; }
+.media { margin: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.media video, .media img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); }
+.media figcaption { font-size: 0.9rem; color: var(--muted); }
+.media.narrow { max-width: 520px; }
+.media-stack { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.pn { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pn a { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); text-decoration: none; }
+.pn a:hover { border-color: var(--accent); }
+.pn .dir { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.pn .nm { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+.pn .next { text-align: right; align-items: flex-end; }
+.cta { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px, 4vw, 36px); display: flex; flex-direction: column; gap: 10px; }
+.cta p { color: var(--muted); max-width: 36em; }
+.cta .actions { margin-top: 10px; }
+
+@media (max-width: 900px) {
+  .cards, .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 800px) {
+  .hero, .about, .contact, .two-col, .dev-items, .cards.two, .cv, .pn { grid-template-columns: minmax(0, 1fr); }
+  .nav { gap: 16px; }
+  .pn .next { text-align: left; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .cards, .tiles, .steps { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .badge .pulse { animation: none; } }
+
+
+/* added: honest notes and image grids */
+.note { border: 1px solid var(--line); border-left: 4px solid var(--accent); background: var(--surface); border-radius: 8px; padding: 12px 16px; max-width: 40em; font-size: 0.95rem; color: var(--muted); }
+.note b { color: var(--ink); }
+.mgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+@media (max-width: 800px) { .mgrid { grid-template-columns: minmax(0, 1fr); } }
+.feat { display: inline-block; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap"><header class="top"><a class="brand" href="index.html">Mujtaba Majid Baig</a><nav class="nav" aria-label="Pages"><a href="index.html">Home</a><a href="projects.html" aria-current="page">Projects</a><a href="cv.html">CV</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav></header>
+    <main>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="projects.html">Projects</a> / Client Hunter Automation</nav>
+      <div class="p-hero">
+        <p class="mono">Sales &middot; Lead research</p>
+        <h1>Client Hunter Automation</h1>
+        <p class="lead">Give a niche and a city. The workflow finds local businesses on Google Maps, checks their websites for gaps and saves a lead list.</p>
+        <ul class="tags"><li>n8n</li><li>Form trigger</li><li>Apify</li><li>Google Maps</li><li>Groq</li><li>Google Sheets</li></ul>
+      </div>
+      <div class="case">
+        <div class="two-col"><div><h2>The problem</h2><p>Finding local businesses that need a service takes hours. You search the map, open each website, note what is missing and then write a first message.</p></div><div><h2>The solution</h2><p>A short form asks for a niche, a city, how many leads, the service you sell and the message language. The workflow finds the businesses on Google Maps, checks each website for simple signals, and an AI model lists the gaps, gives an opportunity score and suggests an offer. Everything is saved in a Google Sheet.</p></div></div>
+        <div><h2>How it works</h2><ol class="flowlist"><li><b>Fill in the form</b><span>Niche, city, number of leads (up to 20), the service you sell, and the language: English or Roman Urdu.</span></li><li><b>Find the businesses</b><span>The workflow calls an Apify Google Maps scraper and gets name, category, rating, reviews, phone and website.</span></li><li><b>Clean the list</b><span>Duplicates are removed and only the useful fields are kept.</span></li><li><b>Check each website</b><span>It looks for online booking, live chat, a WhatsApp button, a contact form, a mobile-friendly page and the copyright year. A business with no website is a gap by itself.</span></li><li><b>AI analysis</b><span>An AI model lists the likely gaps, gives an opportunity score from 1 to 10, suggests the best offer, and drafts a short email and a short chat message.</span></li><li><b>Save and continue</b><span>The lead is added to Google Sheets, and the workflow waits 4 seconds before the next business.</span></li></ol></div>
+        <div><h2>See it working</h2><div class="media-stack"><figure class="media"><img src="clienthunter-workflow.png" alt="The n8n workflow: a form, an Apify search, a loop over each business, a website check or a no-website branch, an AI analysis with a structured output parser, and a save to Google Sheets." loading="lazy"><figcaption>The n8n workflow.</figcaption></figure><figure class="media"><img src="clienthunter-sheet.png" alt="The Client Hunter Leads Google Sheet with columns for date, niche, city, business name, category, rating and reviews." loading="lazy"><figcaption>Leads saved in Google Sheets during test runs.</figcaption></figure></div></div>
+        <p class="note"><b>Built to be careful.</b> If a website cannot be checked, the workflow marks the result as unknown and the AI is told not to say anything about it. The AI may only use the data the workflow found.</p>
+        <div><h2>What the demo shows</h2><ul class="checks"><li>A form that starts the whole search.</li><li>The workflow running for every business in a loop.</li><li>A Google Sheet of businesses with category, rating and reviews from test searches.</li></ul></div>
+        <div><h2>A good fit for</h2><ul class="checks"><li>Freelancers and agencies that sell to local businesses</li><li>Sales teams that build lead lists</li><li>Anyone who wants a first list of leads in minutes, not hours</li></ul></div>
+        <nav class="pn" aria-label="Other projects"><a href="project-legal-operations-hub.html"><span class="dir">Previous</span><span class="nm">Legal Operations Hub</span></a><a class="next" href="project-restaurant-support.html"><span class="dir">Next</span><span class="nm">Restaurant support agent</span></a></nav>
+        <div class="cta"><h2>Want something like this for your business?</h2><p>Tell me what slows your team down. I will tell you whether it can be automated and how it would work.</p><p class="status">mujtaba078123@gmail.com &middot; Karachi, Pakistan (UTC+5)</p><div class="actions"><a class="btn primary" href="index.html#contact">Contact me</a><a class="btn" href="https://wa.me/923110275568" target="_blank" rel="noopener">WhatsApp</a><a class="btn" href="projects.html">All projects</a></div></div>
+      </div>
+    </main></main><footer><span>Mujtaba Majid Baig &middot; Karachi, Pakistan (UTC+5)</span><span><a href="https://github.com/mujtabamajidgit" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mujtaba-baig-majid/" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="Mujtaba-Majid-Baig-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></span></footer></div>
+</body>
+</html>
