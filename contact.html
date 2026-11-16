@@ -292,6 +292,17 @@ footer { border-top: 1px solid var(--line); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+.cform-wrap { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); gap: clamp(24px,5vw,56px); align-items: start; }
+.cform { display: flex; flex-direction: column; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(18px,3vw,28px); position: relative; }
+.cform label { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.cform input, .cform textarea { font: 400 1rem var(--font-body); letter-spacing: 0; text-transform: none; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 14px; width: 100%; transition: border-color .25s, box-shadow .25s; }
+.cform textarea { resize: vertical; min-height: 120px; }
+.cform input:focus, .cform textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(11,90,84,.16); }
+.cform .btn { align-self: flex-start; cursor: pointer; }
+.cform-status { min-height: 1.4em; font-size: .92rem; color: var(--accent); font-weight: 600; }
+.cform-status.err { color: var(--trigger); }
+@media (max-width: 800px) { .cform-wrap { grid-template-columns: minmax(0,1fr); } }
 </style>
 </head>
 <body>
@@ -308,6 +319,16 @@ footer { border-top: 1px solid var(--line); }
           </div>
         </div>
       </section>
+<section id="message"><div class="cform-wrap">
+<div class="sec-head" style="margin-bottom:0"><p class="mono">Send a message</p><h2>Let's talk about the role</h2><p>Write a few lines about the job or project. I reply by email, usually within one working day.</p></div>
+<form class="cform" id="cform" novalidate>
+<label>Your name<input name="name" type="text" autocomplete="name" required placeholder="Full name"></label>
+<label>Your email<input name="email" type="email" autocomplete="email" required placeholder="you@company.com"></label>
+<label>Message<textarea name="message" rows="5" required placeholder="Tell me about the role or project"></textarea></label>
+<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+<button class="btn primary" type="submit">Send message</button>
+<p class="cform-status" id="cform-status" role="status" aria-live="polite"></p>
+</form></div></section>
 </main><footer><span>Mujtaba Majid Baig &middot; Karachi, Pakistan (UTC+5)</span><span><a href="https://github.com/mujtabamajidgit" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://www.linkedin.com/in/mujtaba-baig-majid/" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="Mujtaba-Majid-Baig-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></span></footer></div><script>
 document.querySelectorAll('[data-copy]').forEach(function (btn) {
   btn.addEventListener('click', function () {
@@ -335,6 +356,32 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
   els.forEach(function(el){el.classList.add('reveal');io.observe(el);});
   setTimeout(function(){els.forEach(function(el){el.classList.add('in');});},4000);
+})();
+</script>
+<script>
+(function(){
+  // To receive messages straight in your inbox: make a free form at formspree.io, then paste its address here, e.g. "https://formspree.io/f/abcdwxyz"
+  var FORM_ENDPOINT = "";
+  var EMAIL = "mujtaba078123@gmail.com";
+  var f = document.getElementById('cform'); if(!f) return;
+  var st = document.getElementById('cform-status');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var d = new FormData(f);
+    var name=(d.get('name')||'').trim(), email=(d.get('email')||'').trim(), msg=(d.get('message')||'').trim();
+    st.className='cform-status';
+    if(d.get('_gotcha')) return;
+    if(!name||!/^\S+@\S+\.\S+$/.test(email)||!msg){ st.className='cform-status err'; st.textContent='Please fill in your name, a valid email and a message.'; return; }
+    if(FORM_ENDPOINT){
+      st.textContent='Sending...';
+      fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:d})
+        .then(function(r){ if(r.ok){ f.reset(); st.textContent='Thank you! Your message was sent.'; } else { throw 0; } })
+        .catch(function(){ st.className='cform-status err'; st.textContent='Could not send. Please email '+EMAIL+' directly.'; });
+    } else {
+      location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('Message from '+name)+'&body='+encodeURIComponent(msg+'\n\n'+name+'\n'+email);
+      st.textContent='Opening your email app. If nothing opens, write to '+EMAIL+'.';
+    }
+  });
 })();
 </script>
 </body>
